@@ -1,0 +1,15 @@
+import matplotlib.pyplot as plt
+import cv2 
+
+img = plt.imread("/content/Friends.jpg")
+
+model = cv2.CascadeClassifier("/content/haarcascade_frontalface_alt.xml")
+
+faces = model.detectMultiScale(img)
+
+for face in faces:
+  x,y,w,h = face
+
+  img = cv2.rectangle(img,(x,y),(x+w,y+h),(255,255,255),5)
+
+plt.imshow(img)
